@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+ 
+  database:
+    image: mysql
+    mem_limit: 700m
+    hostname: mysql
+    ports:
+      - "13306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - microservices2
+    
+#  prometheus:
+#    image: prom/prometheus:latest
+#    ports:
+#      - "9090:9090"
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+#    networks:
+#      - microservices2
+      
+#  grafana:
+#    image: grafana/grafana:latest
+#    ports:
+#      - "3000:3000"
+#    environment:
+#      - GF_SECURITY_ADMIN_USER=admin
+#      - GF_SECURITY_ADMIN_PASSWORD=password
+#    networks:
+#      - microservices2
+#    depends_on:
+#      - prometheus
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    mem_limit: 700m
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - microservices2
+      
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    hostname: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - microservices2
+
+
+networks:
+  microservices2:
