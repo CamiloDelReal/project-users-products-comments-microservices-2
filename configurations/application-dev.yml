@@ -23,3 +23,13 @@ spring:
       type: rabbit
     rabbitmq:
       queue: microservices2
+
+security:
+  claims:
+    header-authorities: Authorities
+    separator: --
+  token:
+    key: qwerty123456
+    type: Bearer
+    header-name: token
+    validity: 1800000
