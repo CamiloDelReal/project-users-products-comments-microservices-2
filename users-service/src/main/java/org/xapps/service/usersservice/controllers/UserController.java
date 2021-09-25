@@ -51,7 +51,7 @@ public class UserController {
             if (user != null) {
                 response = new ResponseEntity<>(user, HttpStatus.OK);
             } else {
-                response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                response = new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
             }
         } catch (Exception ex) {
             response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -64,7 +64,7 @@ public class UserController {
         ResponseEntity<UserResponse> response = null;
         try {
             UserResponse user = userService.createUser(userRequest);
-            response = new ResponseEntity<>(user, HttpStatus.OK);
+            response = new ResponseEntity<>(user, HttpStatus.CREATED);
         } catch (Exception ex) {
             response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
