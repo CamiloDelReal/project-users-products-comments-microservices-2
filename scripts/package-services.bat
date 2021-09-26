@@ -16,7 +16,7 @@ goto end
 echo [!] Packaging Configuration Service
 cd ../configuration-service/
 set "mvnErr=0"
-call mvn2 clean package install "-Dmaven.test.skip=true" || set mvnErr=1
+call mvn clean package install "-Dmaven.test.skip=true" || set mvnErr=1
 if "%mvnErr%" == "0" echo [+] Configuration Service successfully packaged
 if "%mvnErr%" == "1" echo [-] Error packaging Configuration Service. Script cannot continue && goto end
 
