@@ -53,6 +53,10 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
 
+logging:
+  file:
+    name: ${spring.application.name}.log
+
 management:
   endpoints:
     web:

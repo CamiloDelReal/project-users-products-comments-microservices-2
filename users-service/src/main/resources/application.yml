@@ -44,6 +44,10 @@ spring:
     rabbitmq:
       queue: microservices2
 
+logging:
+  file:
+    name: ${spring.application.name}.log
+
 eureka:
   instance:
     preferIpAddress: true
