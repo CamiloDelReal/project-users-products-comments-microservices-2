@@ -1,5 +1,5 @@
 # Users, products and comments v2
-Microservices-based application to practice version 2 (didn't want to use different branches xD)
+Microservices-based application to practice (didn't want to use different branches xD)
 
 ### Features
 - Users service
