@@ -42,6 +42,40 @@ services:
     networks:
       - microservices2
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.15.0-amd64
+    mem_limit: 700m
+    hostname: logstash
+    volumes:
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/:/usr/share/logstash/pipeline/"
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/users-service.log:/users-service.log"
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/products-service.log:/products-service.log"
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/comments-service.log:/comments-service.log"
+    networks:
+      - microservices2
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0-amd64
+    mem_limit: 3000m
+    hostname: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"    
+    environment:
+      - discovery.type=single-node
+      - discovery.seed_hosts=127.0.0.1:9300
+    networks:
+      - microservices2
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0-amd64
+    mem_limit: 700m
+    hostname: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - microservices2
+
   database:
     image: mysql
     mem_limit: 700m
@@ -160,6 +194,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/users_products_comments?serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      LOGGING_FILE_NAME: /users-service.log
+    volumes:
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/users-service.log:/users-service.log"
     ports:
       - "10400:10400"
     hostname: users
@@ -194,6 +231,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/users_products_comments?serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      LOGGING_FILE_NAME: /products-service.log
+    volumes:
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/products-service.log:/products-service.log"
     ports:
       - "10500:10500"
     hostname: products
@@ -228,6 +268,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/users_products_comments?serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      LOGGING_FILE_NAME: /comments-service.log
+    volumes:
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/comments-service.log:/comments-service.log"
     ports:
       - "10600:10600"
     hostname: comments
