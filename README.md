@@ -21,17 +21,17 @@ Microservices-based application to practice (didn't want to use different branch
   
 ### Class diagram
 <p float="left">
-<img src="https://github.com/CamiloDelReal/project-users-products-comments-microservices-2/blob/main/specs/exported/Class%20Diagram.png" width="80%" height="80%" />
+<img src="https://github.com/CamiloDelReal/project-users-products-comments-microservices-2/blob/master/specs/exported/Class%20Diagram.png" width="80%" height="80%" />
 </p>
 
 ### Entity relationship diagram
 <p float="left">
-<img src="https://github.com/CamiloDelReal/project-users-products-comments-microservices-2/blob/main/specs/exported/Entity%20Relationship%20Diagram.png" width="80%" height="80%" />
+<img src="https://github.com/CamiloDelReal/project-users-products-comments-microservices-2/blob/master/specs/exported/Entity%20Relationship%20Diagram.png" width="80%" height="80%" />
 </p>
 
 ### Deployment diagram
 <p float="left">
-<img src="https://github.com/CamiloDelReal/project-users-products-comments-microservices-2/blob/main/specs/exported/Deployment%20Diagram.png" width="80%" height="80%" />
+<img src="https://github.com/CamiloDelReal/project-users-products-comments-microservices-2/blob/master/specs/exported/Deployment%20Diagram.png" width="80%" height="80%" />
 </p>
 
 ### Technologies used
