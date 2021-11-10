@@ -47,7 +47,7 @@ services:
     mem_limit: 700m
     hostname: logstash
     volumes:
-      - "D:/workspace/project-users-products-comments-microservices-2/logs/:/usr/share/logstash/pipeline/"
+      - "D:/workspace/project-users-products-comments-microservices-2/logs/docker:/usr/share/logstash/pipeline/"
       - "D:/workspace/project-users-products-comments-microservices-2/logs/users-service.log:/users-service.log"
       - "D:/workspace/project-users-products-comments-microservices-2/logs/products-service.log:/products-service.log"
       - "D:/workspace/project-users-products-comments-microservices-2/logs/comments-service.log:/comments-service.log"
@@ -108,6 +108,9 @@ services:
       SPRING_RABBITMQ_PORT: 5672
       SPRING_RABBITMQ_USERNAME: guest
       SPRING_RABBITMQ_PASSWORD: guest
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS: /configurations
+    volumes:
+      - "D:/workspace/project-users-products-comments-microservices-2/configurations:/configurations"
     ports:
       - "10100:10100"
     hostname: configuration
