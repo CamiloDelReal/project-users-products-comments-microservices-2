@@ -106,6 +106,8 @@ services:
       SPRING_ZIPKIN_BASEURL: http://zipkin:9411/
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
     ports:
       - "10100:10100"
     hostname: configuration
@@ -132,6 +134,8 @@ services:
       SPRING_ZIPKIN_BASEURL: http://zipkin:9411/
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
     ports:
       - "10200:10200"
     hostname: discovery
@@ -160,6 +164,8 @@ services:
       SPRING_ZIPKIN_BASEURL: http://zipkin:9411/
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
     ports:
       - "10300:10300"
     hostname: gateway
