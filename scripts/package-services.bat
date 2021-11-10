@@ -61,3 +61,4 @@ if "%mvnErr%" == "0" echo [+] Comments Service successfully packaged
 if "%mvnErr%" == "1" echo [-] Error packaging Comments Service. Script cannot continue && goto end
 
 :end
+cd ../scripts/

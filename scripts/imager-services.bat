@@ -70,3 +70,4 @@ if "%dockerErr%" == "0" echo [+] Comments Service successfully imaged
 if "%dockerErr%" == "1" echo [-] Error imaging Comments Service. Script cannot continue && goto end
 
 :end
+cd ../scripts/
