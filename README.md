@@ -73,3 +73,8 @@ Microservices-based application (didn't want to use different branches xD)
 - Script for building docker images for services
 - Docker compose deployment script
 - You may need to configure some paths, credentials and urls inside configuration files based on you environment
+- Third party service URLs
+  * Grafana: [http://localhost:3000](http://localhost:3000)
+  * Zipkin: [http://localhost:9411](http://localhost:9411)
+  * RabbitMQ: [http://localhost:15672](http://localhost:15672)
+  * Kibana: [http://localhost:5601](http://localhost:5601)
