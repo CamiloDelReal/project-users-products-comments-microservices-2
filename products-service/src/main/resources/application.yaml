@@ -64,6 +64,11 @@ management:
         include: "*"
 
 security:
+  origins:
+    url: "*"
+    max-age: 3600
+    methods: GET, POST, PUT, DELETE
+    headers: Origin, Content-Type, Accept, Authorization
   claims:
     header-authorities: Authorities
     separator: --

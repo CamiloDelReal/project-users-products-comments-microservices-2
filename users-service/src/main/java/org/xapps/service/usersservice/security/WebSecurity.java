@@ -11,8 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.xapps.service.usersservice.services.UserService;
 import org.xapps.service.usersservice.utils.ConfigProvider;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -29,6 +35,17 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors().configurationSource(new CorsConfigurationSource() {
+            @Override
+            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+                CorsConfiguration corsConfiguration = new CorsConfiguration();
+                corsConfiguration.setAllowedOrigins(List.of(configProvider.getOriginsUrl()));
+                corsConfiguration.setAllowedMethods(Arrays.asList(configProvider.getOriginsMethods()));
+                corsConfiguration.setAllowedHeaders(Arrays.asList(configProvider.getOriginsHeaders()));
+                corsConfiguration.setMaxAge(configProvider.getOriginsMaxAge());
+                return corsConfiguration;
+            }
+        });
         http
                 .csrf().disable()
                 .authorizeRequests()

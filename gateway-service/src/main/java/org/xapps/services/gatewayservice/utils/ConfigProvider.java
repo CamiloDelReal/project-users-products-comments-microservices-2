@@ -1,4 +1,4 @@
-package org.xapps.service.usersservice.utils;
+package org.xapps.services.gatewayservice.utils;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,24 +9,6 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class ConfigProvider {
-    @Value("${security.claims.header-authorities}")
-    private String headerAuthorities;
-
-    @Value("${security.claims.separator}")
-    private String authoritiesSeparator;
-
-    @Value("${security.token.key}")
-    private String tokenKey;
-
-    @Value("${security.token.type}")
-    private String tokenType;
-
-    @Value("${security.token.header-name}")
-    private String tokenHeader;
-
-    @Value("${security.token.validity}")
-    private Long validity;
-
     @Value("${security.origins.url}")
     private String originsUrl;
 

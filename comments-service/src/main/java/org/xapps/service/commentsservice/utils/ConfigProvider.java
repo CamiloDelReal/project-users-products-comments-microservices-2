@@ -26,4 +26,16 @@ public class ConfigProvider {
 
     @Value("${security.token.validity}")
     private Long validity;
+
+    @Value("${security.origins.url}")
+    private String originsUrl;
+
+    @Value("${security.origins.max-age}")
+    private Long originsMaxAge;
+
+    @Value("${security.origins.methods}")
+    private String[] originsMethods;
+
+    @Value("${security.origins.headers}")
+    private String[] originsHeaders;
 }
