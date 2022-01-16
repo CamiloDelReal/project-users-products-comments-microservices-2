@@ -1,0 +1,95 @@
+version: "3.8"
+
+services:
+     
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prometheus-docker.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      - microservices2
+      
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    networks:
+      - microservices2
+    depends_on:
+      - prometheus
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    mem_limit: 700m
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - microservices2
+      
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    hostname: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - microservices2
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.15.0-amd64
+    mem_limit: 700m
+    hostname: logstash
+    volumes:
+      - "./../logs/docker:/usr/share/logstash/pipeline/"
+      - "./../logs/users-service.log:/users-service.log"
+      - "./../logs/products-service.log:/products-service.log"
+      - "./../logs/comments-service.log:/comments-service.log"
+    networks:
+      - microservices2
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0-amd64
+    mem_limit: 3000m
+    hostname: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"    
+    environment:
+      - discovery.type=single-node
+      - discovery.seed_hosts=127.0.0.1:9300
+    networks:
+      - microservices2
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0-amd64
+    mem_limit: 700m
+    hostname: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - microservices2
+
+  database:
+    image: mysql
+    mem_limit: 700m
+    hostname: database
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: users_products_comments
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - microservices2
+
+networks:
+  microservices2:
