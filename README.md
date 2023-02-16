@@ -78,3 +78,6 @@ Microservices-based application (didn't want to use different branches xD)
   * Zipkin: [http://localhost:9411](http://localhost:9411)
   * RabbitMQ: [http://localhost:15672](http://localhost:15672)
   * Kibana: [http://localhost:5601](http://localhost:5601)
+
+### ToDoS
+- Unit and Instrumentation tests
